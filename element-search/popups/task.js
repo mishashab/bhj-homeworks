@@ -8,10 +8,11 @@ modalMain.classList.add('modal_active');
 modalClose.forEach(item => item.onclick = function() {
       modalMain.classList.remove('modal_active');
       modalSuccess.classList.remove('modal_active');
-  });
+});
 
 
 btnSuccess.onclick = function() {
-    btnSuccess.classList.remove('modal_active')
-    modalSuccess.classList.add('modal_active');
-  };
+      btnSuccess.classList.remove('modal_active');
+      modalMain.classList.remove('modal_active');
+      modalSuccess.classList.add('modal_active');
+};
