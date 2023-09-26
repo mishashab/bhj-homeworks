@@ -30,8 +30,8 @@ function nextSlide() {
 	sliderDots[i].classList.add('slider__dot_active');
 };
 
-const sliderPrev= Array.from(document.querySelector('.slider__arrow_prev'));
-const sliderNext = Array.from(document.querySelector('.slider__arrow_next'));
+slideArrowPrev.onclick = function() {prevSlide()};
+slideArrowNext.onclick = function() {nextSlide()};
 	
 window.addEventListener("keydown", function (event) {
 	switch(event.key) {
