@@ -4,35 +4,50 @@ const slideArrowNext= document.querySelector('.slider__arrow_next');
 const sliderItems = Array.from(document.querySelectorAll('.slider__item'));
 const sliderDots = Array.from(document.querySelectorAll('.slider__dot'));
 
-let i = 0;
-let maxItem = sliderItems.length - 1;
+
+function changeSlide(nextIindex) {
+	item = document.querySelector('.slider__item_active');
+	currentIndex = sliderItems.indexOf(item);
+	sliderItems[currentIndex].classList.remove('slider__item_active');
+	sliderDots[currentIndex].classList.remove('slider__dot_active');
+	sliderItems[nextIindex].classList.add('slider__item_active');
+	sliderDots[nextIindex].classList.add('slider__dot_active');
+}
 
 
 function prevSlide() {
-	sliderItems[i].classList.remove('slider__item_active');
-	sliderDots[i].classList.remove('slider__dot_active');
+	item = document.querySelector('.slider__item_active');
+	i = sliderItems.indexOf(item);
+	console.log(i);
 	i -= 1;
 	if (i == -1){
-		i = maxItem;
+		i = sliderItems.length - 1;
 	}
-	sliderItems[i].classList.add('slider__item_active');
-	sliderDots[i].classList.add('slider__dot_active');
-};
+	changeSlide(i);
+}
+
 
 function nextSlide() {
-	sliderItems[i].classList.remove('slider__item_active');
-	sliderDots[i].classList.remove('slider__dot_active');
+	item = document.querySelector('.slider__item_active');
+	i = sliderItems.indexOf(item);
+	console.log(i);
 	i += 1;
-	if (i > maxItem){
+	if (i == sliderItems.length){
 		i = 0;
 	}
-	sliderItems[i].classList.add('slider__item_active');
-	sliderDots[i].classList.add('slider__dot_active');
-};
+	changeSlide(i);
+}
+
+
+document.querySelectorAll('.slider__dot').forEach(item => item.onclick = function() {
+	nextIndex = sliderDots.indexOf(item);
+	changeSlide(nextIndex);
+});
 
 slideArrowPrev.onclick = function() {prevSlide()};
 slideArrowNext.onclick = function() {nextSlide()};
-	
+
+
 window.addEventListener("keydown", function (event) {
 	switch(event.key) {
 		case "ArrowLeft":
@@ -44,12 +59,4 @@ window.addEventListener("keydown", function (event) {
 		default:
 			return;
 	}
-});
-
-document.querySelectorAll('.slider__dot').forEach(item => item.onclick = function() {
-	document.querySelectorAll('.slider__item').forEach((element) => {element.classList.remove('slider__item_active');});
-	document.querySelectorAll('.slider__dot').forEach((element) => {element.classList.remove('slider__dot_active');});
-	index = sliderDots.indexOf(item);
-	sliderItems[index].classList.add('slider__item_active');
-	sliderDots[index].classList.add('slider__dot_active');
 });
