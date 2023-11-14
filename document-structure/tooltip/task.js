@@ -19,7 +19,6 @@ actionElements.forEach(item =>
         toolTip.classList.add('tooltip');
         toolTip.textContent = item.title;
         toolTip.classList.add('tooltip_active');
-        console.log(toolTip);
 
         toolTip.style.left = `${item.getBoundingClientRect().left}px`;
         toolTip.style.top = `${item.getBoundingClientRect().bottom}px`;
