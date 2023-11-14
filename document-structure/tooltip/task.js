@@ -1,13 +1,22 @@
-document.querySelectorAll('.has-tooltip').forEach(item => 
+actionElements = document.querySelectorAll('.has-tooltip');
+
+actionElements.forEach(item => 
     item.addEventListener('click', (event) => {
-        flag = item.childNodes.length === 1;
+		if(document.querySelector('.tooltip_active') && 
+			document.querySelector('.tooltip_active').textContent == item.title){
+				hasToolTip = true;
+			}
+		else {
+			hasToolTip = false;
+		}
+		
         event.preventDefault();
 
         if (document.querySelector('.tooltip_active')) {
             document.querySelector('.tooltip_active').remove();
         }
 
-        if (flag){
+        if (!hasToolTip){
         const toolTip = document.createElement('div');
         toolTip.classList.add('tooltip');
         toolTip.textContent = item.title;
@@ -16,26 +25,26 @@ document.querySelectorAll('.has-tooltip').forEach(item =>
 
         toolTip.style.left = `${item.getBoundingClientRect().left}px`;
         toolTip.style.top = `${item.getBoundingClientRect().bottom}px`;
-        item.insertAdjacentElement("afterbegin", toolTip);
+        item.insertAdjacentElement("afterend", toolTip);
         }
     })
 )
 
 
-const cloleTooltips = () => {
-    item = document.querySelector('.tooltip_active');
+const moveToolTips = () => {
+    const item = document.querySelector('.tooltip_active');
     if (item) {
         const { top, bottom } = item.getBoundingClientRect();
-        
+		
         if (top > window.innerHeight || bottom < 0){
             item.remove();
         } 
         else {
-            itemParent = item.parentElement;
+			const itemParent = document.querySelector(`[title="${item.textContent}"`);
             item.style.left = `${itemParent.getBoundingClientRect().left}px`;
             item.style.top = `${itemParent.getBoundingClientRect().bottom}px`;
         }
     }
 }
 
-window.addEventListener("scroll", cloleTooltips);
+window.addEventListener("scroll", moveToolTips);
