@@ -40,7 +40,7 @@ const moveToolTips = () => {
             item.remove();
         } 
         else {
-	    const itemParent = document.querySelector(`[title="${item.textContent}"`);
+	    const itemParent = document.querySelector(`[title="${item.textContent}"]`);
             item.style.left = `${itemParent.getBoundingClientRect().left}px`;
             item.style.top = `${itemParent.getBoundingClientRect().bottom}px`;
         }
