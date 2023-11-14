@@ -21,7 +21,7 @@ products.forEach(item => {
 
 function AddProduct(product) {
     let volume = product.querySelector('.product__quantity-value').textContent;
-	const productInCart = Array.from(cart.children).find((item) => item.dataset.id == product.dataset.id)
+    const productInCart = Array.from(cart.children).find((item) => item.dataset.id == product.dataset.id)
 	
     if(cart.children.length == 0 || !productInCart){
         const newProduct = document.createElement('div');
