@@ -17,6 +17,7 @@ inputMassege.addEventListener('keypress', (event) => {
     }    
 })
 
+
 function getRandomAnswer() {
     let answerArray = ['Все на перекуре.', 
         'У нас кофебрейк.',
@@ -27,6 +28,7 @@ function getRandomAnswer() {
 
     return answerArray[(Math.floor(Math.random() * answerArray.length))]
 }
+
 
 function addMessage(text = ''){
     let messageClass = ''
