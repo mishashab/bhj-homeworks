@@ -10,14 +10,6 @@ document.querySelector('.tasks__add').addEventListener('click', (event) => {
     }
 })
 
-taskInput.addEventListener('keyup', (event) => {
-    event.preventDefault();
-    if(event.code === 'Enter' && taskInput.value) {
-        addTask();
-    }
-})
-
-
 
 const addTask = () => {
     const task = document.createElement('div');
