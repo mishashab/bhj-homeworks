@@ -2,13 +2,13 @@ actionElements = document.querySelectorAll('.has-tooltip');
 
 actionElements.forEach(item => 
     item.addEventListener('click', (event) => {
-		if(document.querySelector('.tooltip_active') && 
-			document.querySelector('.tooltip_active').textContent == item.title){
-			hasToolTip = true;
-		}
-		else {
-			hasToolTip = false;
-		}
+	if(document.querySelector('.tooltip_active') && 
+		document.querySelector('.tooltip_active').textContent == item.title){
+		hasToolTip = true;
+	}
+	else {
+		hasToolTip = false;
+	}
 		
         event.preventDefault();
 
