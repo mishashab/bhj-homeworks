@@ -20,10 +20,10 @@ products.forEach(item => {
 })
 
 function AddProduct(product) {
-    const volume = product.querySelector('.product__quantity-value').textContent;
-    const indexProd =  IndexCart(product);
-
-    if(cart.children.length == 0 || indexProd < 0){
+    let volume = product.querySelector('.product__quantity-value').textContent;
+	const productInCart = Array.from(cart.children).find((item) => item.dataset.id == product.dataset.id)
+	
+    if(cart.children.length == 0 || !productInCart){
         const newProduct = document.createElement('div');
         newProduct.classList.add('cart__product');
         newProduct.dataset.id = product.dataset.id;
@@ -33,17 +33,7 @@ function AddProduct(product) {
             <div class="cart__product-count">${volume}</div>`;
 
     } else { 
-        itogVolume = cart.children[indexProd].querySelector('.cart__product-count');
+        const itogVolume = productInCart.querySelector('.cart__product-count');
         itogVolume.textContent = +itogVolume.textContent + +volume;
     }
-}
-
-function IndexCart(product){
-    ids = product.dataset.id;
-    for (let i = 0; i < cart.children.length; i++){
-        if (cart.children[i].dataset.id == ids){
-            return i
-        };
-    }
-    return -1;
 }
