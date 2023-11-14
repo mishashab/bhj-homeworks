@@ -20,9 +20,12 @@ function upCheck(item) {
         const ulChildCheckBoxes = ulParent.querySelectorAll('.interest__check');
         const ulCheckBox = ulParent.parentElement.querySelector('.interest__check');
 
-        let trueBoxes = Array.from(ulChildCheckBoxes).filter((item) => item.checked === true).length;
-        let inderBoxes = Array.from(ulChildCheckBoxes).filter((item) => (item.checked === false && item.indeterminate === true)).length;
-        let falseBoxes = Array.from(ulChildCheckBoxes).filter((item) => (item.checked === false && item.indeterminate === false)).length;
+        let trueBoxes = Array.from(ulChildCheckBoxes).filter((item) => 
+            item.checked === true).length;
+        let inderBoxes = Array.from(ulChildCheckBoxes).filter((item) => 
+            (item.checked === false && item.indeterminate === true)).length;
+        let falseBoxes = Array.from(ulChildCheckBoxes).filter((item) => 
+            (item.checked === false && item.indeterminate === false)).length;
         
         if (trueBoxes > 0 && inderBoxes == 0 && falseBoxes == 0){
             ulCheckBox.indeterminate = false;
@@ -35,7 +38,7 @@ function upCheck(item) {
         } else {
             ulCheckBox.checked = false;
             ulCheckBox.indeterminate = true;
-        }    // ulParent.parentElement.querySelector('.interest__check').checked = false;   
+        }  
         upCheck(ulParent.parentElement);
     }
 }
